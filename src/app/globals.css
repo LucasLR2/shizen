@@ -110,3 +110,151 @@ body {
   color: #000000;
   font-weight: bold;
 }
+
+/* Layout Principal */
+.dashboard-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* TopBar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #ffffff;
+}
+
+.topbar-brand {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.5px;
+  text-transform: lowercase;
+}
+
+.topbar-user {
+  font-size: 0.9rem;
+  color: #333333;
+  font-weight: 500;
+}
+
+/* Cuerpo con SideBar y Contenido */
+.dashboard-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 240px;
+  border-right: 1px solid #e5e5e5;
+  background-color: #fafafa;
+  padding: 1.5rem 1rem;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-link {
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #555555;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+  background-color: #eeeeee;
+  color: #000000;
+  font-weight: 500;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* Layout del Dashboard */
+.dashboard-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* TopBar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #ffffff;
+}
+
+.topbar-logo {
+  font-size: 1.25rem;
+  font-weight: bold;
+  letter-spacing: -0.05em;
+  text-transform: lowercase;
+}
+
+.topbar-user {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333333;
+}
+
+/* Body (SideBar + Main Content) */
+.dashboard-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* SideBar */
+.sidebar {
+  width: 240px;
+  border-right: 1px solid #e5e5e5;
+  background-color: #fafafa;
+  padding: 1.5rem 1rem;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-link {
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #555555;
+  font-size: 0.9rem;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+  background-color: #eaeaea;
+  color: #000000;
+  font-weight: 500;
+}
+
+/* Áreas de Contenido del Dashboard */
+.dashboard-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}

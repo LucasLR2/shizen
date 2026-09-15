@@ -1,7 +1,10 @@
 export default function DashboardPage() {
   return (
-    <main style={{ padding: "2rem" }}>
-      <h1>Dashboard (Acceso exitoso)</h1>
-    </main>
+    <section>
+      <h1>Bienvenido al Dashboard</h1>
+      <p style={{ marginTop: "0.5rem", color: "#666" }}>
+        Estructura base del sistema modular lista.
+      </p>
+    </section>
   );
 }
