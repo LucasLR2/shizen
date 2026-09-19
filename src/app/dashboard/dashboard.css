@@ -1,0 +1,304 @@
+/* ==========================================
+   LAYOUT DEL DASHBOARD (FLEX / GRID ADAPTABLE)
+   ========================================== */
+
+/* Contenedor Principal Adaptable */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 1rem;
+  box-sizing: border-box;
+  overflow: hidden; 
+}
+
+/* Sección Superior: 78% de altura vertical | Distribución horizontal 75% / 25% */
+.dashboard-top-section {
+  display: grid;
+  grid-template-columns: 75% calc(25% - 1rem); /* 75% Hero / 25% Agenda */
+  gap: 1rem;
+  flex: 0 0 78%; /* 78% de la altura vertical */
+  min-height: 0;
+}
+
+/* Banner Principal Hero */
+.hero-card {
+  background-color: var(--bg-card);
+  background-image: linear-gradient(
+      180deg,
+      rgba(10, 10, 10, 0.5) 0%,
+      rgba(10, 10, 10, 0.85) 100%
+    ),
+    url("/dashboard1.jpg");
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.hero-subtitle {
+  font-family: var(--font-arima);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent-red);
+}
+
+.hero-title {
+  font-family: var(--font-arima);
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-top: 0.2rem;
+}
+
+.hero-quote {
+  font-family: var(--font-arima);
+  font-size: 0.85rem;
+  color: #e4e4e7;
+  border-left: 2px solid var(--accent-red);
+  padding-left: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.hero-time {
+  font-family: var(--font-arima);
+  font-size: 2.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.hero-date {
+  font-family: var(--font-arima);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  margin-top: 0.4rem;
+}
+
+/* ==========================================
+   PANEL DE AGENDA DE TAREAS
+   ========================================== */
+
+.agenda-card {
+  background-color: #0c0c0e;
+  background-image: url("/agenda.png");
+  background-size: cover;
+  background-position: center;
+  border: 1.5px solid var(--accent-red);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  box-shadow: 0 0 12px rgba(230, 57, 70, 0.4), inset 0 0 12px rgba(0, 0, 0, 0.9);
+}
+
+.agenda-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.agenda-header-icon {
+  width: 20px;
+  height: 20px;
+  color: #ef4444;
+}
+
+.agenda-header h2 {
+  font-family: var(--font-arima), sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.agenda-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.agenda-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.agenda-section-title {
+  font-size: 0.75rem;
+  color: #71717a;
+  text-transform: capitalize;
+}
+
+.agenda-section:first-child .agenda-section-title {
+  color: var(--accent-red);
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(230, 57, 70, 0.4);
+}
+
+.task-card {
+  background-color: #121215;
+  border: 1px solid #27272a;
+  border-radius: 8px;
+  padding: 0.75rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.task-card.featured {
+  background-color: #0d0d0d;
+  border: 1.5px solid var(--accent-red);
+  box-shadow: 0 0 12px rgba(230, 57, 70, 0.4), inset 0 0 12px rgba(0, 0, 0, 0.9);
+}
+
+.task-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dot.red {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #ef4444;
+}
+
+.task-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.time-badge {
+  font-size: 0.68rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-weight: 700;
+  background-color: var(--accent-red);
+  color: #ffffff;
+  box-shadow: 0 0 8px rgba(230, 57, 70, 0.6);
+  border: none;
+}
+
+.task-datetime {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #a1a1aa;
+  font-size: 0.75rem;
+}
+
+.task-date-icon {
+  width: 13px;
+  height: 13px;
+  color: #ef4444;
+}
+
+.task-description {
+  font-size: 0.75rem;
+  color: #a1a1aa;
+  margin: 0.2rem 0 0 0;
+  line-height: 1.35;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* ==========================================
+   FILA INFERIOR: PANEL DE ESTADÍSTICAS CON ÍCONOS Y IMAGEN LIMPIA
+   ========================================== */
+
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  flex: 0 0 calc(22% - 1rem);
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #0a0a0a;
+  background-image: url("/estadisticas.png");
+  background-size: cover;
+  background-position: center;
+  border: 1.5px solid var(--accent-red);
+  border-radius: 12px;
+  /* Espaciado lateral amplio para dejar visibles las flores e ilustraciones laterales de la imagen */
+  padding: 0.75rem 12%; 
+  align-items: center;
+  box-shadow: 0 0 12px rgba(230, 57, 70, 0.4), inset 0 0 12px rgba(0, 0, 0, 0.9);
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  height: 60%;
+  padding: 0 1.5rem;
+}
+
+/* Línea divisoria roja fina entre ítems */
+.stat-item:not(:last-child) {
+  border-right: 1px solid rgba(230, 57, 70, 0.4);
+}
+
+.stat-text-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
+.stat-label {
+  font-family: var(--font-arima), sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.stat-number {
+  font-family: var(--font-arima), sans-serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.stat-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(230, 57, 70, 0.8);
+  background-color: rgba(10, 10, 10, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-red);
+  box-shadow: 0 0 8px rgba(230, 57, 70, 0.3);
+  flex-shrink: 0;
+}
+
+.stat-icon-wrapper svg {
+  width: 20px;
+  height: 20px;
+}
