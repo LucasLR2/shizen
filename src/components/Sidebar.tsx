@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 const DashboardIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="sidebar-link-icon">
@@ -52,7 +53,6 @@ export default function Sidebar() {
 
   return (
     <aside className="sidebar-container">
-      {/* Navegación principal */}
       <nav className="sidebar-nav">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
@@ -62,8 +62,23 @@ export default function Sidebar() {
               href={item.href}
               className={`sidebar-link ${isActive ? "active" : ""}`}
             >
-              {item.icon}
-              <span>{item.label}</span>
+              {/* Píldora animada deslizante de Framer Motion */}
+              {isActive && (
+                <motion.div
+                  layoutId="activeSidebarIndicator"
+                  className="sidebar-active-bg"
+                  transition={{
+                    type: "spring",
+                    stiffness: 380,
+                    damping: 30,
+                  }}
+                />
+              )}
+
+              <div className="sidebar-link-content">
+                {item.icon}
+                <span>{item.label}</span>
+              </div>
             </Link>
           );
         })}

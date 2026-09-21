@@ -1,3 +1,4 @@
+import Link from "next/link";
 import "./dashboard.css";
 
 // Icono de Calendario / Agenda para el Header
@@ -159,14 +160,16 @@ export default function DashboardPage() {
             <span className="stat-label">Notas</span>
             <span className="stat-number">8</span>
           </div>
-          <div className="stat-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="8" y1="13" x2="16" y2="13"/>
-              <line x1="8" y1="17" x2="12" y2="17"/>
-            </svg>
-          </div>
+          <Link href="../notas" title="Ir a Notas">
+            <div className="stat-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="8" y1="13" x2="16" y2="13"/>
+                <line x1="8" y1="17" x2="12" y2="17"/>
+              </svg>
+            </div>
+          </Link>
         </div>
 
         {/* Cuentas */}
@@ -175,12 +178,14 @@ export default function DashboardPage() {
             <span className="stat-label">Cuentas</span>
             <span className="stat-number">4</span>
           </div>
-          <div className="stat-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
-          </div>
+          <Link href="../cuentas" title="Ir a Cuentas">
+            <div className="stat-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
+          </Link>
         </div>
 
         {/* Links */}
@@ -189,12 +194,14 @@ export default function DashboardPage() {
             <span className="stat-label">Links</span>
             <span className="stat-number">9</span>
           </div>
-          <div className="stat-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-            </svg>
-          </div>
+          <Link href="../links" title="Ir a Links">
+            <div className="stat-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+              </svg>
+            </div>
+          </Link>
         </div>
 
         {/* Proyectos */}
@@ -203,11 +210,13 @@ export default function DashboardPage() {
             <span className="stat-label">Proyectos</span>
             <span className="stat-number">2</span>
           </div>
-          <div className="stat-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L8.6 3.3A2 2 0 0 0 6.9 2.5H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2z"/>
-            </svg>
-          </div>
+          <Link href="../proyectos" title="Ir a Proyectos">
+            <div className="stat-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L8.6 3.3A2 2 0 0 0 6.9 2.5H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2z"/>
+              </svg>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

@@ -43,7 +43,7 @@ html, body {
 
 .sidebar-container {
   width: 240px;
-  height: calc(100vh - 70px); /* Ajustado a la altura disponible bajo la topbar */
+  height: calc(100vh - 80px);
   background-color: #08080a;
   background-image: url("/sidebar.png");
   background-size: cover;
@@ -67,22 +67,30 @@ html, body {
 }
 
 .sidebar-link {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 0.85rem;
   padding: 0.75rem 1rem;
   border-radius: 10px;
   color: #a1a1aa;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
-  transition: all 0.2s ease-in-out;
+  transition: color 0.2s ease;
   border: 1px solid transparent;
+}
+
+/* Contenido de texto e ícono (se posiciona sobre la píldora roja animada) */
+.sidebar-link-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
 }
 
 .sidebar-link:hover {
   color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.03);
 }
 
 .sidebar-link-icon {
@@ -90,25 +98,27 @@ html, body {
   height: 18px;
   color: currentColor;
   flex-shrink: 0;
+  transition: color 0.2s ease;
 }
 
-/* Estado Activo (Píldora Oscura con Borde Resplandeciente Rojo) */
+/* Píldora Neón Animada (Manejada por Framer Motion) */
+.sidebar-active-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background-color: #121215;
+  border: 1.5px solid var(--accent-red);
+  box-shadow: 0 0 14px rgba(230, 57, 70, 0.4), inset 0 0 10px rgba(230, 57, 70, 0.25);
+  z-index: 1;
+}
+
 .sidebar-link.active {
   color: #ffffff;
-  background-color: rgba(20, 20, 22, 0.85);
-  border: 1.5px solid #e63946;
-  box-shadow: 0 0 12px rgba(230, 57, 70, 0.35), inset 0 0 8px rgba(230, 57, 70, 0.2);
 }
 
 .sidebar-link.active .sidebar-link-icon {
-  color: #e63946;
-}
-
-/* Footer con Avatar Circular N */
-.sidebar-footer {
-  padding-top: 1rem;
-  display: flex;
-  align-items: center;
+  color: var(--accent-red);
+  filter: drop-shadow(0 0 5px rgba(230, 57, 70, 0.8));
 }
 
 /* Estructura Base del Layout */
@@ -341,3 +351,154 @@ html, body {
   width: 18px;
   height: 1px;
 }
+
+/* ==========================================
+   DROPDOWN DE PERFIL (TOPBAR)
+   ========================================== */
+
+.profile-dropdown-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Rotación del ícono del chevron */
+.dropdown-icon.rotate {
+  transform: rotate(180deg);
+}
+
+/* Feedback cuando la cápsula está desplegada */
+.profile-capsule.active .profile-pill-body {
+  box-shadow: 0 0 18px rgba(230, 57, 70, 0.6), inset 0 0 12px rgba(0, 0, 0, 0.9);
+}
+
+/* Menú flotante */
+.profile-menu {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 1rem;
+  width: 190px;
+  background-color: #0d0d0d;
+  border: 1.5px solid var(--accent-red);
+  border-radius: 12px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  box-shadow: 0 0 16px rgba(230, 57, 70, 0.35), 0 10px 25px rgba(0, 0, 0, 0.9);
+  z-index: 100;
+  animation: profileMenuFade 0.18s ease-out forwards;
+}
+
+.profile-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  color: #e4e4e7;
+  text-decoration: none;
+  font-family: var(--font-arima);
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-sizing: border-box;
+}
+
+.profile-menu-item svg {
+  width: 17px;
+  height: 17px;
+  color: var(--accent-red);
+  filter: drop-shadow(0 0 4px rgba(230, 57, 70, 0.5));
+}
+
+.profile-menu-item:hover {
+  background-color: rgba(230, 57, 70, 0.15);
+  color: #ffffff;
+}
+
+.profile-menu-item.logout {
+  color: #ef4444;
+}
+
+.profile-menu-item.logout svg {
+  color: #ef4444;
+  filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.5));
+}
+
+.profile-menu-item.logout:hover {
+  background-color: rgba(239, 68, 68, 0.2);
+}
+
+.profile-menu-divider {
+  height: 1px;
+  background-color: rgba(230, 57, 70, 0.25);
+  margin: 0.25rem 0;
+}
+
+@keyframes profileMenuFade {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   INTERACTIVIDAD DE ICON-WRAPPER (EFECTO BOTÓN CON HOVER A "+")
+   ========================================== */
+
+/* Preparamos el contenedor para permitir la transición y el ícono flotante */
+.icon-wrapper,
+.stat-icon-wrapper {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+/* Ocultar el ícono SVG original suavemente en hover */
+.icon-wrapper:hover svg,
+.stat-icon-wrapper:hover svg {
+  opacity: 0;
+  transform: scale(0.6) rotate(-45deg);
+  transition: all 0.2s ease;
+}
+
+/* SVG original transiciona de vuelta */
+.icon-wrapper svg,
+.stat-icon-wrapper svg {
+  transition: all 0.2s ease;
+}
+
+/* Crear el símbolo "+" mediante pseudo-elemento ::before o ::after */
+.icon-wrapper::after,
+.stat-icon-wrapper::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -65%) scale(0.5);
+  font-family: system-ui, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: var(--accent-red);
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-wrapper:hover::after,
+.stat-icon-wrapper:hover::after {
+  opacity: 1;
+  color: var(--accent-red);
+  transform: translate(-50%, -65%) scale(1);
+} 
